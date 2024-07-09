@@ -1,6 +1,10 @@
 .*
-**/tsconfig.json
-**/webpack.config.js
+tsconfig.json
 node_modules
 src
 .github
+.run
+jsr.json
+.editorconfig
+.nvmrc
+.npmrc

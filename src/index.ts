@@ -47,6 +47,30 @@ type JSONCleanerPluginParams = {
 }
 
 // noinspection JSUnusedGlobalSymbols
+/**
+ * A plugin to clean up JSON files
+ *
+ * ```typescript
+ * import esbuild from "esbuild";
+ * import JSONCleanerPlugin from "esbuild-plugin-json-cleaner";
+ *
+ * esbuild.build({
+ *    outdir: "dist",
+ *    plugins: [
+ *      JSONCleanerPlugin({
+ *          src: "src/data.json",
+ *          out: "data.json",
+ *          removeSchema: true,
+ *          removeTags: ["tag1", "tag2"],
+ *          minify: false,
+ *          space: 2
+ *      })
+ *    ]
+ * });
+ * ```
+ * @param params
+ * @constructor
+ */
 export default function JSONCleanerPlugin(params: JSONCleanerPluginParams): esbuild.Plugin {
     return {
         name: "json-edit",

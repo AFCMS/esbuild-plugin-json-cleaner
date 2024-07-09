@@ -4,6 +4,11 @@ import fs from "node:fs";
 import path from "node:path";
 
 /**
+ * An esbuild plugin to cleanup JSON files by changing the indentation and removing some top level tags.
+ * @module
+ */
+
+/**
  * Ensure that the directory exists.
  * @param {string} dir - The directory to check.
  */

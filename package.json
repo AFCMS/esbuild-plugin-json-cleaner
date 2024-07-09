@@ -1,6 +1,6 @@
 {
     "name": "esbuild-plugin-json-cleaner",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "esbuild plugin to cleanup JSON files",
     "main": "src/index.ts",
     "type": "module",
@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/AFCMS/esbuild-plugin-json-edit"
+        "url": "git+https://github.com/AFCMS/esbuild-plugin-json-cleaner"
     },
     "keywords": [
         "esbuild",

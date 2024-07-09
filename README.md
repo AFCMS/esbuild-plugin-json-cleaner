@@ -1,6 +1,6 @@
 # esbuild-plugin-json-cleanup
 
-[![NPM Version](https://img.shields.io/npm/v/esbuild-plugin-json-cleanup)](https://www.npmjs.com/package/esbuild-plugin-json-cleanup)
+[![NPM Version](https://img.shields.io/npm/v/esbuild-plugin-json-cleanup)](https://www.npmjs.com/package/esbuild-plugin-json-cleaner)
 [![JSR](https://jsr.io/badges/@afcms/esbuild-plugin-json-cleaner)](https://jsr.io/@afcms/esbuild-plugin-json-cleaner)
 
 An esbuild plugin to cleanup JSON files by changing the indentation and removing some top level tags.

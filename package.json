@@ -1,0 +1,38 @@
+{
+    "name": "esbuild-plugin-json-cleaner",
+    "version": "0.0.1",
+    "description": "esbuild plugin to cleanup JSON files",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc --module CommonJS --outDir lib && tsc --module ES6 --outDir lib-esm",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AFCMS/esbuild-plugin-json-edit.git"
+    },
+    "keywords": [
+        "esbuild",
+        "plugin",
+        "json"
+    ],
+    "engines": {
+        "node": ">=20"
+    },
+    "author": {
+        "name": "AFCMS",
+        "email": "afcm.contact@gmail.com",
+        "url": "https://afcms.github.io"
+    },
+    "license": "MIT",
+    "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903",
+    "devDependencies": {
+        "@types/node": "^20.14.10",
+        "esbuild": "^0.23.0",
+        "typescript": "^5.5.3"
+    },
+    "peerDependencies": {
+        "esbuild": "^0.23.0"
+    }
+}

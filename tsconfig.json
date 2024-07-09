@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "Node",
+        "module": "CommonJS",
+        "target": "ES6",
+        "lib": [
+            "ES2015",
+            "DOM"
+        ],
+        "outDir": "lib",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "declaration": true,
+    },
+    "files": [
+        "./src/index.ts"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false
+}

@@ -2,7 +2,7 @@
     "name": "esbuild-plugin-json-cleaner",
     "version": "0.0.1",
     "description": "esbuild plugin to cleanup JSON files",
-    "main": "index.js",
+    "main": "src/index.ts",
     "type": "module",
     "scripts": {
         "build": "tsc --module CommonJS --outDir lib && tsc --module ES6 --outDir lib-esm",

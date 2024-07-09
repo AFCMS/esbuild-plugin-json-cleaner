@@ -52,4 +52,4 @@ jobs:
 
       - name: Publish on JSR
         if: startsWith(github.ref, 'refs/tags/')
-        run: npx jsr publish
+        run: pnpx jsr publish

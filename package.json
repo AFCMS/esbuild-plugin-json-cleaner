@@ -1,6 +1,6 @@
 {
     "name": "esbuild-plugin-json-cleaner",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "esbuild plugin to cleanup JSON files",
     "main": "src/index.ts",
     "type": "module",

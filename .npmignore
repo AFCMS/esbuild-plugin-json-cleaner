@@ -1,5 +1,6 @@
 .*
 tsconfig.json
+tsdown.config.ts
 node_modules
 src
 .github

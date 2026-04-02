@@ -95,7 +95,7 @@ export default function JSONCleanerPlugin(params: JSONCleanerPluginParams): esbu
 
                 const indent = params.minify ? 0 : (params.space ?? '\t');
 
-                const fullOut = path.join(build.initialOptions.outdir, params.out);
+                const fullOut = path.join(build.initialOptions.outdir ?? '', params.out);
 
                 makeSureDirectoryExists(path.dirname(fullOut));
 

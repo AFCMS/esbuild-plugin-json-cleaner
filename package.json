@@ -1,38 +1,61 @@
 {
-    "name": "esbuild-plugin-json-cleaner",
-    "version": "0.0.6",
-    "description": "esbuild plugin to cleanup JSON files",
-    "main": "src/index.ts",
-    "type": "module",
-    "scripts": {
-        "build": "tsc --module CommonJS --outDir lib && tsc --module ES6 --outDir lib-esm",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/AFCMS/esbuild-plugin-json-cleaner"
-    },
-    "keywords": [
-        "esbuild",
-        "plugin",
-        "json"
-    ],
-    "engines": {
-        "node": ">=20"
-    },
-    "author": {
-        "name": "AFCMS",
-        "email": "afcm.contact@gmail.com",
-        "url": "https://afcms.github.io"
-    },
-    "license": "MIT",
-    "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903",
-    "devDependencies": {
-        "@types/node": "^24.10.11",
-        "esbuild": "^0.27.2",
-        "typescript": "^6.0.2"
-    },
-    "peerDependencies": {
-        "esbuild": "^0.27.2"
-    }
+  "name": "esbuild-plugin-json-cleaner",
+  "version": "0.0.6",
+  "description": "esbuild plugin to cleanup JSON files",
+  "keywords": [
+    "esbuild",
+    "json",
+    "plugin"
+  ],
+  "homepage": "https://github.com/AFCMS/esbuild-plugin-json-cleaner",
+  "bugs": {
+    "url": "https://github.com/AFCMS/esbuild-plugin-json-cleaner/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "AFCMS",
+    "email": "afcm.contact@gmail.com",
+    "url": "https://afcms.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AFCMS/esbuild-plugin-json-cleaner.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.mts",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint .",
+    "format": "oxfmt .",
+    "release": "bumpp",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
+    "@types/node": "^24.10.11",
+    "bumpp": "^11.0.1",
+    "esbuild": "^0.28.0",
+    "oxfmt": "^0.43.0",
+    "oxlint": "^1.58.0",
+    "publint": "^0.3.18",
+    "tsdown": "^0.21.7",
+    "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "esbuild": "^0.27.2"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.33.0"
 }

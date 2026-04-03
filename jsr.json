@@ -1,12 +1,8 @@
 {
-    "name": "@afcms/esbuild-plugin-json-cleaner",
-    "version": "0.0.6",
-    "exports": "./src/index.ts",
-    "publish": {
-        "include": [
-            "./src/*.ts",
-            "README.md",
-            "LICENSE"
-        ]
-    }
+  "name": "@afcms/esbuild-plugin-json-cleaner",
+  "version": "0.0.6",
+  "exports": "./dist/index.mjs",
+  "publish": {
+    "include": ["./dist/**", "README.md", "LICENSE"]
+  }
 }

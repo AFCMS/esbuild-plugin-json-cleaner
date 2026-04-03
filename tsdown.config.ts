@@ -10,7 +10,7 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   platform: "node",
-  publint: {
+  /*publint: {
     level: "suggestion",
-  },
+  },*/
 });

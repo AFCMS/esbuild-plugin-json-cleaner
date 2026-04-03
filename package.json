@@ -29,10 +29,10 @@
     "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903",
     "devDependencies": {
         "@types/node": "^24.10.11",
-        "esbuild": "^0.27.2",
+        "esbuild": "^0.28.0",
         "typescript": "^6.0.2"
     },
     "peerDependencies": {
-        "esbuild": "^0.27.2"
+        "esbuild": "^0.28.0"
     }
 }

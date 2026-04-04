@@ -1,6 +1,6 @@
 {
   "name": "esbuild-plugin-json-cleaner",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "esbuild plugin to cleanup JSON files",
   "keywords": [
     "esbuild",

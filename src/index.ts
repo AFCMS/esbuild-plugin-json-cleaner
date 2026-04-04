@@ -20,6 +20,9 @@ function makeSureDirectoryExists(dir: string) {
   }
 }
 
+/**
+ * The base parameters for the JSONCleanerPlugin
+ */
 interface JSONCleanerPluginParamsBase {
   /**
    * Source JSON file
@@ -41,6 +44,9 @@ interface JSONCleanerPluginParamsBase {
   readonly removeTags?: readonly string[];
 }
 
+/**
+ * Minify the JSON by using an indent size of 0
+ */
 interface JSONCleanerPluginParamsMinify {
   /**
    * Minify the JSON by using an indent size of 0
@@ -49,6 +55,9 @@ interface JSONCleanerPluginParamsMinify {
   readonly space?: never;
 }
 
+/**
+ * Change the indentation of the JSON, default to `\t`
+ */
 interface JSONCleanerPluginParamsSpace {
   /**
    * Change the indentation of the JSON, default to `\t`
@@ -63,6 +72,9 @@ interface JSONCleanerPluginParamsDefaultIndent {
   readonly space?: undefined;
 }
 
+/**
+ * The parameters for the JSONCleanerPlugin
+ */
 export type JSONCleanerPluginParams = JSONCleanerPluginParamsBase &
   (
     | JSONCleanerPluginParamsMinify

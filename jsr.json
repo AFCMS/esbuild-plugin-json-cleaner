@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "exports": "./dist/index.mjs",
   "publish": {
-    "include": ["./dist/**", "README.md", "LICENSE"]
+    "include": ["dist/**", "README.md", "LICENSE"],
+    "exclude": ["!dist"]
   }
 }

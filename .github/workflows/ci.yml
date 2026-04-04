@@ -53,7 +53,7 @@ jobs:
 
       - name: Dry Run Publish on NPM
         if: false # "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
-        run: pnpm publish --provenance --access public --dry-run
+        run: pnpm publish --provenance --access public --dry-run --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -63,7 +63,7 @@ jobs:
 
       - name: Publish on NPM
         if: "startsWith(github.ref, 'refs/tags/')"
-        run: pnpm publish --provenance --access public
+        run: pnpm publish --provenance --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

@@ -28,10 +28,10 @@ importers:
         version: 1.63.0
       publint:
         specifier: ^0.3.18
-        version: 0.3.19
+        version: 0.3.20
       tsdown:
         specifier: ^0.22.0
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.19)(typescript@6.0.3)(unrun@0.2.37)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.20)(typescript@6.0.3)(unrun@0.2.37)
       typescript:
         specifier: ^6.0.2
         version: 6.0.3
@@ -845,8 +845,8 @@ packages:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
-  publint@0.3.19:
-    resolution: {integrity: sha512-J3p4GOocCRFyLLFRzGfIhAwWgk0Kkcdxj5iFspFvCYbyiJs5IhCM8gsIkcNeQL+tdpV671RtJQiTFSUKhl1Wjg==}
+  publint@0.3.20:
+    resolution: {integrity: sha512-UWqFYP7VBVCe9l/leEEGJrDs6Am4K4KapLmLi5qbt+9fA+Ny38ghdW+bw1nYfVqCK8/3kgsxjjhFjTYqYYRpyw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1531,7 +1531,7 @@ snapshots:
 
   picomatch@4.0.4: {}
 
-  publint@0.3.19:
+  publint@0.3.20:
     dependencies:
       '@publint/pack': 0.1.4
       package-manager-detector: 1.6.0
@@ -1618,7 +1618,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.19)(typescript@6.0.3)(unrun@0.2.37):
+  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.20)(typescript@6.0.3)(unrun@0.2.37):
     dependencies:
       ansis: 4.2.0
       cac: 7.0.0
@@ -1637,7 +1637,7 @@ snapshots:
       unconfig-core: 7.5.0
     optionalDependencies:
       '@arethetypeswrong/core': 0.18.2
-      publint: 0.3.19
+      publint: 0.3.20
       typescript: 6.0.3
       unrun: 0.2.37
     transitivePeerDependencies:

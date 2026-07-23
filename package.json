@@ -43,7 +43,7 @@
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",
     "@types/node": "^24.10.11",
-    "bumpp": "^11.0.1",
+    "bumpp": "^12.0.0",
     "esbuild": "^0.28.0",
     "oxfmt": "^0.59.0",
     "oxlint": "^1.58.0",

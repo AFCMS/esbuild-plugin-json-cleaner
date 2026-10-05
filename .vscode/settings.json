@@ -18,6 +18,9 @@
   "files.insertFinalNewline": true,
   "files.eol": "\n",
   "npm.packageManager": "pnpm",
+  "files.associations": {
+    "**/.github/workflows/*.{yml,yaml}": "github-actions-workflow"
+  },
   "[yaml]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -60,6 +63,9 @@
     },
     "editor.suggest.insertMode": "replace",
     "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.tabSize": 2
+  },
+  "[github-actions-workflow]": {
     "editor.tabSize": 2
   }
 }

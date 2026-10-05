@@ -11,29 +11,29 @@ on:
       - master
   workflow_dispatch:
 
-permissions:
-  contents: read
-  id-token: write
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   main:
+    name: Main
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Required for publishing to JSR
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v6
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v7
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
         with:
-          node-version-file: .node-version
-          cache: pnpm
-          registry-url: "https://registry.npmjs.org"
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+          install: true
 
       - name: Build
         run: pnpm build
@@ -42,30 +42,25 @@ jobs:
         run: pnpm run typecheck
 
       - name: Tests
-        if: false
         run: pnpm run test
 
       - name: Lint
         run: pnpm run lint
 
       - name: Format
-        run: pnpm run format --check
+        run: pnpm run format:check
 
       - name: Dry Run Publish on NPM
-        if: false # "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
-        run: pnpm publish --provenance --access public --dry-run --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        # "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
+        if: false
+        run: pnpm stage publish --provenance --access public --dry-run --no-git-checks
 
       - name: Dry Run Publish on JSR
-        if: "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
         run: pnpx jsr publish --dry-run
 
       - name: Publish on NPM
         if: "startsWith(github.ref, 'refs/tags/')"
-        run: pnpm publish --provenance --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm stage publish --provenance --access public --no-git-checks
 
       - name: Publish on JSR
         if: "startsWith(github.ref, 'refs/tags/')"

@@ -1,11 +1,10 @@
 {
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   "editor.formatOnType": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.tabSize": 2,
-  "editor.indentSize": 2,
   "editor.detectIndentation": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always",
@@ -40,23 +39,27 @@
   "oxc.tsConfigPath": "./tsconfig.json",
   "oxc.fmt.configPath": "./oxfmt.config.ts",
   "[typescript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.tabSize": 2
   },
   "[javascript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.tabSize": 2
   },
   "[json]": {
     "editor.quickSuggestions": {
       "strings": true
     },
     "editor.suggest.insertMode": "replace",
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.tabSize": 2
   },
   "[jsonc]": {
     "editor.quickSuggestions": {
       "strings": true
     },
     "editor.suggest.insertMode": "replace",
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.tabSize": 2
   }
 }

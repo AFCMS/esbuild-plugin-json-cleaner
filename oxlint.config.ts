@@ -1,3 +1,7 @@
 import { defineConfig } from "oxlint";
 
-export default defineConfig({});
+export default defineConfig({
+  options: {
+    typeAware: true,
+  },
+});

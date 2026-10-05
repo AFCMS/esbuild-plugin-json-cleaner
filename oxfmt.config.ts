@@ -10,4 +10,5 @@ export default defineConfig({
   trailingComma: "all",
   ignorePatterns: ["dist/**", "node_modules/**"],
   sortImports: true,
+  sortPackageJson: true,
 });

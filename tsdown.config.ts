@@ -10,7 +10,10 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   platform: "node",
-  /*publint: {
+  attw: {
+    profile: "esm-only",
+  },
+  publint: {
     level: "suggestion",
-  },*/
+  },
 });

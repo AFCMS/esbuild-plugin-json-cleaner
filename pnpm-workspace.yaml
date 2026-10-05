@@ -1,4 +1,10 @@
 allowBuilds:
   esbuild: true
 
+blockExoticSubdeps: true
+minimumReleaseAge: 360
+trustPolicy: no-downgrade
+
 pmOnFail: ignore
+
+provenance: true

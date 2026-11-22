@@ -19,20 +19,8 @@
   "files.eol": "\n",
   "npm.packageManager": "pnpm",
   "files.associations": {
-    "**/.github/workflows/*.{yml,yaml}": "github-actions-workflow"
-  },
-  "[yaml]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.autoIndent": "keep",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.defaultColorDecorators": "never",
-    "editor.quickSuggestions": {
-      "strings": true,
-      "other": true,
-      "comments": false
-    },
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "**/.github/workflows/*.{yml,yaml}": "github-actions-workflow",
+    "**/.github/workflows/actions.lock": "yaml"
   },
   "js/ts.tsdk.path": "node_modules/typescript/lib",
   "oxc.enable": true,
@@ -65,7 +53,21 @@
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.tabSize": 2
   },
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "keep",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultColorDecorators": "never",
+    "editor.quickSuggestions": {
+      "strings": true,
+      "other": true,
+      "comments": false
+    },
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
   "[github-actions-workflow]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   }
 }

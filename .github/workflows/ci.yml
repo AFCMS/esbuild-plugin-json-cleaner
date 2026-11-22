@@ -1,5 +1,6 @@
 ---
 name: CI
+
 on:
   push:
     branches:
@@ -15,54 +16,122 @@ permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
 
 jobs:
-  main:
-    name: Main
+  build:
+    name: Build
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # Required for publishing to JSR
+    outputs:
+      tarball: ${{ steps.pack.outputs.tarball }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
-      - name: Setup PNPM
-        uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+      - name: Install PNPM
+        uses: pnpm/setup@v3.2.0
         with:
           install: true
-
-      - name: Build
-        run: pnpm build
-
-      - name: Type Check
-        run: pnpm run typecheck
-
-      - name: Tests
-        if: false
-        run: pnpm run test
+          require-lockfile: true
 
       - name: Lint
-        run: pnpm run lint
+        run: pnpm run lint --type-check
 
-      - name: Format
+      - name: Format check
         run: pnpm run format:check
 
-      - name: Dry Run Publish on NPM
-        # "github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')"
-        if: false
-        run: pnpm stage publish --provenance --access public --dry-run --no-git-checks
+      - name: Test
+        run: pnpm run test
 
-      - name: Dry Run Publish on JSR
-        run: pnpx jsr publish --dry-run
+      - name: Build
+        run: pnpm run build
+
+      - name: Generate production SBOM
+        run: pnpm sbom --sbom-format cyclonedx --prod --out esbuild-plugin-json-cleaner.cdx.json
+
+      - name: Pack
+        id: pack
+        run: |-
+          TARBALL=$(pnpm pack | tail -n 1)
+          echo "tarball=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload Tarball
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          archive: false
+          path: ${{ steps.pack.outputs.tarball }}
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          archive: false
+          path: esbuild-plugin-json-cleaner.cdx.json
+          if-no-files-found: error
+
+  publish:
+    name: Publish
+    needs: build
+    runs-on: ubuntu-latest
+    if: "github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')"
+    environment: npm-publish
+    permissions:
+      contents: write # Required to create the GitHub release and upload the tarball
+      id-token: write # Required for OIDC authentication with npm
+    env:
+      TARBALL: ${{ needs.build.outputs.tarball }}
+    steps:
+      - name: Download Tarball
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: ${{ env.TARBALL }}
+
+      - name: Download SBOM
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: esbuild-plugin-json-cleaner.cdx.json
+
+      - name: Install PNPM
+        uses: pnpm/setup@v3.2.0
+        with:
+          runtime: node@^26
+          version: 12
 
       - name: Publish on NPM
-        if: "startsWith(github.ref, 'refs/tags/')"
-        run: pnpm stage publish --provenance --access public --no-git-checks
+        run: pnpm stage publish --provenance --access public $TARBALL
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |-
+          gh release create "$GITHUB_REF_NAME" "$TARBALL" esbuild-plugin-json-cleaner.cdx.json \
+            --verify-tag \
+            --title "$GITHUB_REF_NAME" \
+            --notes ""
+
+  jsr-publish:
+    name: JSR Publish
+    needs: build
+    runs-on: ubuntu-latest
+    if: "github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')"
+    environment: npm-publish
+    permissions:
+      id-token: write # Required for OIDC authentication with JSR
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install PNPM
+        uses: pnpm/setup@v3.2.0
+        with:
+          install: true
+          require-lockfile: true
 
       - name: Publish on JSR
-        if: "startsWith(github.ref, 'refs/tags/')"
         run: pnpx jsr publish

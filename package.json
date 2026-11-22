@@ -21,6 +21,12 @@
     "type": "git",
     "url": "git+https://github.com/AFCMS/esbuild-plugin-json-cleaner.git"
   },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/AFCMS"
+    }
+  ],
   "files": [
     "dist"
   ],
@@ -29,6 +35,10 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "build": "tsdown",
@@ -70,6 +80,5 @@
   },
   "engines": {
     "node": ">=24"
-  },
-  "packageManager": "pnpm@12.9.1"
+  }
 }

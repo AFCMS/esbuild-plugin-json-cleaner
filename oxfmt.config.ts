@@ -8,7 +8,7 @@ export default defineConfig({
   semi: true,
   singleQuote: false,
   trailingComma: "all",
-  ignorePatterns: ["dist/**", "node_modules/**"],
+  ignorePatterns: ["dist/**", "node_modules/**", ".github/workflows/actions.lock"],
   sortImports: true,
   sortPackageJson: true,
 });
